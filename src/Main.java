@@ -11,12 +11,12 @@ public class Main {
 
         //----- INIT TABLE -----\\
         // Creates the deck and the first players
-        Table table = new Table(2);
+        Table table = new Table(5);
 
         // Shuffles the deck
         table.getDeck().shuffleDeck();
+        // table.getDeck().displayDeck();  // Shows full list of cards (ArrayList)
 
-        table.getDeck().displayDeck();  // Displays list of cards (ArrayList)
 
         // Hands out 5 cards to each player
         table.handOutCard(5);
