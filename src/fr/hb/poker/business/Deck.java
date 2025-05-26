@@ -7,16 +7,17 @@ public class Deck {
 
     public Deck() {
         deck = new ArrayList<>();
+        generateDeck();
     }
 
     public void generateDeck() {
         String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
         ArrayList<Color> colors = new ArrayList<>();
+
         colors.add(new Color("Club"));
         colors.add(new Color("Diamond"));
         colors.add(new Color("Heart"));
         colors.add(new Color("Spade"));
-
 
         for (int i = 0; i < names.length; i++) {
             for (Color color : colors) {
@@ -24,6 +25,8 @@ public class Deck {
             }
         }
     }
+
+    // shuffleDeck
 
     public void displayDeck() {
         System.out.printf("----- DECK (%s cards) -----%n", deck.size());
