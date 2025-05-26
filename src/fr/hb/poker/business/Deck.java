@@ -48,10 +48,9 @@ public class Deck {
      * Displays the list of cards present in the deck
      */
     public void displayDeck() {
-        System.out.printf("----- DECK (%s cards) -----%n", deck.size());
+        System.out.printf("%n----- DECK (%s cards) -----%n", deck.size());
         for (Card card : deck) {
-            System.out.printf(card.toString());
-            // System.out.printf("%s of %s (%s)%n", card.getName(), card.getColor().getName(), card.getValue());
+            System.out.printf("- %s of %s (%s)%n", card.getName(), card.getColor().getName(), card.getValue());
         }
     }
 }

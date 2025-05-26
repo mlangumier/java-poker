@@ -7,16 +7,23 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("\n--- POKER ---\n");
+        System.out.println("\n----- POKER -----\n");
 
         //----- INIT TABLE -----\\
-        Table table = new Table(1); // Creates the deck and the first players
-        table.getDeck().shuffleDeck(); // Shuffles the deck
-        table.handOutCard(5); // Hands out 5 cards to each player
+        // Creates the deck and the first players
+        Table table = new Table(2);
+
+        // Shuffles the deck
+        table.getDeck().shuffleDeck();
+
+        table.getDeck().displayDeck();  // Displays list of cards (ArrayList)
+
+        // Hands out 5 cards to each player
+        table.handOutCard(5);
 
         //----- DISPLAY LOG INFO -----\\
         // System.out.println(table.getPlayers().toString()); // Displays players (string)
-        // table.getDeck().displayDeck();  // Displays list of cards (ArrayList)
+        // System.out.println("Deck size: " + table.getDeck().getDeck().size());
         table.showPlayersHands();
     }
 }

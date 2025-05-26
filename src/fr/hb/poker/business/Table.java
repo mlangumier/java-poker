@@ -60,7 +60,7 @@ public class Table {
     public void handOutCard(int counter) {
         for (int i = 0; i < counter; i++) {
             for (Player player : this.players) {
-                Card card = deck.getDeck().get(i);
+                Card card = deck.getDeck().getFirst();
 
                 player.getHand().add(card);
                 deck.getDeck().remove(card);
