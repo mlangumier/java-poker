@@ -5,6 +5,13 @@ public class Card {
     private int value;
     private Color color;
 
+    /**
+     * Constructor - Creates a card
+     *
+     * @param name  Name of the card (2, 7, Jack, King, etc.)
+     * @param value Defines the value of the card (numerical)
+     * @param color Defines the color of the card (Club, Diamond, Heart, Spade)
+     */
     public Card(String name, int value, Color color) {
         this.name = name;
         this.value = value;
@@ -37,10 +44,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                ", color=" + color +
-                '}';
+        return String.format("%s of %s (%s)", this.getName(), this.getColor().getName(), this.getValue());
     }
 }

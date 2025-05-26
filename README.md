@@ -9,7 +9,11 @@ mini-game.
 
 ### Classes
 
-- Player: has a first name, last name, and a city
-- City: has a name, a postcode, and lat/long coordinates
+- Table : corresponds to our game's table
+    - Has between 1 and 5 players
+    - Plays with a deck of cards
+- Deck : manages our cards
 
-## Features
+### Features
+
+- User input to create players (Scanner)

@@ -1,8 +1,11 @@
 package fr.hb.poker.business;
 
+import java.util.ArrayList;
+
 public class Player {
     private String name;
     private int points;
+    private ArrayList<Card> hand = new ArrayList<>();
     private City city;
 
     /**
@@ -27,11 +30,11 @@ public class Player {
         this.city = city;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -51,11 +54,31 @@ public class Player {
         this.city = city;
     }
 
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
+    public void setHand(ArrayList<Card> hand) {
+        this.hand = hand;
+    }
+
+    public void showHand() {
+        System.out.printf("%n--- %s' hand ---%n", this.getName());
+
+        for (Card card : hand) {
+            System.out.println("- " + card.toString());
+        }
+    }
+
     /**
      * @return A string containing our player's information
      */
     @Override
     public String toString() {
-        return String.format("%s's score: %s", name, points);
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", points=" + points +
+                ", hand=" + hand +
+                '}';
     }
 }
