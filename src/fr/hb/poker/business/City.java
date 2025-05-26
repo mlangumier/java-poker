@@ -1,10 +1,13 @@
 package fr.hb.poker.business;
 
+import java.util.ArrayList;
+
 public class City {
     private String name;
     private String postcode;
     private Double latitude;
     private Double longitude;
+    private ArrayList<Player> players;
 
     //--- Overloading constructors (surcharge)
     // Allows us to have multiple constructors in case not all attributes are required

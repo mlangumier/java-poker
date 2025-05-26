@@ -7,10 +7,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("\n--- POKER ---");
 
-        Player playerTest = new Player("Mathieu", "Langumier");
-        System.out.println(playerTest.toString());
+        City cityStEtienne = new City("St-Etienne", "42100");
+        City cityLyon = new City("Villeurbanne", "69100");
 
-        City cityTest = new City("St-Etienne", "42100");
-        System.out.println(cityTest.toString());
+        Player firstPlayer = new Player("Mathieu", "Langumier");
+        firstPlayer.setCity(cityStEtienne);
+        Player secondPlayer = new Player("Samuel", "William", cityLyon);
+
+        System.out.println(firstPlayer.toString());
+        System.out.println(secondPlayer.toString());
     }
 }

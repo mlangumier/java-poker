@@ -4,9 +4,10 @@ public class Player {
     private String firstName;
     private String lastName;
     private int points;
+    private City city;
 
     /**
-     * Constructor
+     * Constructor with only the player's basic attributes
      *
      * @param firstName First name of the player
      * @param lastName  Last name of the player
@@ -15,6 +16,20 @@ public class Player {
         this.firstName = firstName;
         this.lastName = lastName;
         this.points = 0;
+    }
+
+    /**
+     * Constructor with the player's attributes and his location
+     *
+     * @param firstName First name of the player
+     * @param lastName  Last name of the player
+     * @param city      Location
+     */
+    public Player(String firstName, String lastName, City city) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.points = 0;
+        this.city = city;
     }
 
     public String getFirstName() {
@@ -41,12 +56,24 @@ public class Player {
         this.points = points;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    /**
+     * @return A string containing our player's information
+     */
     @Override
     public String toString() {
         return "Player{" +
                 "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", lastName='" + lastName.toUpperCase() + '\'' +
                 ", points=" + points +
+                ", city=" + city +
                 '}';
     }
 }
