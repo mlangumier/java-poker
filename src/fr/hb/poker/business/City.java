@@ -79,6 +79,14 @@ public class City {
         this.longitude = longitude;
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
     @Override
     public String toString() {
         return "City{" +
@@ -86,6 +94,7 @@ public class City {
                 ", postcode='" + postcode + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", players=" + players +
                 '}';
     }
 }

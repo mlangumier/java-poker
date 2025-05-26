@@ -5,7 +5,11 @@
 Learning about Object-Oriented Programming (OOP) and more advanced Java & Java SE methods by working on a Poker
 mini-game.
 
-## Features
+## Setup
 
-- Player
-- City
+### Classes
+
+- Player: has a first name, last name, and a city
+- City: has a name, a postcode, and lat/long coordinates
+
+## Features
