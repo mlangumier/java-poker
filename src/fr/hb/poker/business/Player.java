@@ -62,8 +62,11 @@ public class Player {
         this.hand = hand;
     }
 
+    /**
+     * Shows the cards in the hand of a player
+     */
     public void showHand() {
-        System.out.printf("%n--- %s' hand ---%n", this.getName());
+        System.out.printf("%n--- %s's hand ---%n", this.getName());
 
         for (Card card : hand) {
             System.out.println("- " + card.toString());

@@ -43,8 +43,8 @@ public class Table {
 
         int i = 0;
         while (i < count && this.players.size() < 6) {
-            System.out.printf("--- Player-%s ---%n", i + 1);
-            System.out.print("Enter your first name: ");
+            System.out.printf("--- Player %s ---%n", i + 1);
+            System.out.print("Enter your name: ");
             firstName = scanner.nextLine();
 
             this.players.add(new Player(firstName));

@@ -12,3 +12,4 @@ public enum Combination {
     ONE_PAIR,
     NO_PAIR,
 }
+

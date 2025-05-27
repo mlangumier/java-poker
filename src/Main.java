@@ -1,8 +1,5 @@
 import fr.hb.poker.business.*;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -15,8 +12,6 @@ public class Main {
 
         // Shuffles the deck
         table.getDeck().shuffleDeck();
-        // table.getDeck().displayDeck();  // Shows full list of cards (ArrayList)
-
 
         // Hands out 5 cards to each player
         table.handOutCard(5);
@@ -25,5 +20,6 @@ public class Main {
         // System.out.println(table.getPlayers().toString()); // Displays players (string)
         // System.out.println("Deck size: " + table.getDeck().getDeck().size());
         table.showPlayersHands();
+        // table.getDeck().displayDeck();  // Shows full list of cards (ArrayList)
     }
 }
