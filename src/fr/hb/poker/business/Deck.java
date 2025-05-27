@@ -51,6 +51,7 @@ public class Deck {
         System.out.printf("%n----- DECK (%s cards) -----%n", deck.size());
         for (Card card : deck) {
             System.out.printf("- %s of %s (%s)%n", card.getName(), card.getColor().getName(), card.getValue());
+            // System.out.printf("- %s of %s (%s)%n", card.getName(), card.getColor().getName(), card.getValue());
         }
     }
 }

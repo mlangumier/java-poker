@@ -1,33 +1,63 @@
 package fr.hb.poker.business;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Player {
+    //--- Personal info
+    private Long id;
     private String name;
+    private LocalDate birthDate;
+    private City city;
+    private static Long counter = 0L; // Auto-boxing: '0'(L = Long) is placed inside a box, corresponds to an object.
+    //--- Game info
     private int points;
     private ArrayList<Card> hand = new ArrayList<>();
-    private City city;
+
+    //--- OVERLOADING constructors (FR: surcharge)
+    // Allows us to have multiple constructors in case not all attributes are required
 
     /**
-     * Constructor with only the player's basic attributes
+     * Constructor 1: with only the player's basic attributes
      *
-     * @param name First name of the player
+     * @param name Name of the player
      */
     public Player(String name) {
+        this.id = ++counter;
         this.name = name;
         this.points = 0;
     }
 
     /**
-     * Constructor with the player's attributes and his location
+     * Constructor 2: with the player's attributes and his location
      *
-     * @param name First name of the player
+     * @param name Name of the player
      * @param city Location
      */
     public Player(String name, City city) {
-        this.name = name;
-        this.points = 0;
+        // Instead of repeating the attributes to create the user, we can call the other constructor this way:
+        this(name); // this(): is the constructor method of this class (vs `this.something` that refers to the objects of the class)
         this.city = city;
+    }
+
+    /**
+     * Constructor 3: with the player's attributes and his birthdate
+     *
+     * @param name      Name of the player
+     * @param city      Location of the player
+     * @param birthDate Birthdate of the player
+     */
+    public Player(String name, City city, LocalDate birthDate) {
+        this(name, city);
+        this.birthDate = birthDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -62,6 +92,14 @@ public class Player {
         this.hand = hand;
     }
 
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
     /**
      * Shows the cards in the hand of a player
      */
@@ -78,10 +116,13 @@ public class Player {
      */
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
+        return "\nPlayer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", city=" + city +
                 ", points=" + points +
                 ", hand=" + hand +
-                '}';
+                "}";
     }
 }

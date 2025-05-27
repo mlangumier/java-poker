@@ -1,5 +1,6 @@
 package fr.hb.poker.business;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +14,8 @@ public class Table {
      * @param playerNbr Number of players joining the game when it starts {1-5}
      */
     public Table(int playerNbr) {
-        addPlayerV1(playerNbr);
+        // addPlayerV1(playerNbr);
+        createPreGeneratedPlayers();
     }
 
     public ArrayList<Player> getPlayers() {
@@ -30,6 +32,13 @@ public class Table {
 
     public void setDeck(Deck deck) {
         this.deck = deck;
+    }
+
+    public void createPreGeneratedPlayers() {
+        this.players.add(new Player("Matt")); // C1
+        this.players.add(new Player("Sam", new City("Villeurbanne"))); // C2
+        this.players.add(new Player("William", new City("Annecy"), LocalDate.of(1992, 2, 24))); // C3
+        this.players.add(new Player("James", new City("Lyon", "69003"), LocalDate.of(1992, 2, 24))); // C3
     }
 
     /**

@@ -8,7 +8,7 @@ public class Main {
 
         //----- INIT TABLE -----\\
         // Creates the deck and the first players
-        Table table = new Table(5);
+        Table table = new Table(2);
 
         // Shuffles the deck
         table.getDeck().shuffleDeck();
@@ -17,9 +17,9 @@ public class Main {
         table.handOutCard(5);
 
         //----- DISPLAY LOG INFO -----\\
-        // System.out.println(table.getPlayers().toString()); // Displays players (string)
+        System.out.println(table.getPlayers().toString()); // Displays players (string)
         // System.out.println("Deck size: " + table.getDeck().getDeck().size());
-        table.showPlayersHands();
+        // table.showPlayersHands();
         // table.getDeck().displayDeck();  // Shows full list of cards (ArrayList)
     }
 }

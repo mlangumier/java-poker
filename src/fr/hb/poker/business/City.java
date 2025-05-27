@@ -3,37 +3,45 @@ package fr.hb.poker.business;
 import java.util.ArrayList;
 
 public class City {
+    private Long id;
     private String name;
     private String postcode;
     private Double latitude;
     private Double longitude;
     private ArrayList<Player> players;
-
-    //--- Overloading constructors (surcharge)
-    // Allows us to have multiple constructors in case not all attributes are required
+    private static Long counter = 0L;
 
     /**
-     * Constructor with one param (only need name, ex: search city's name in Google API)
+     * Default constructor
+     * Tips: Java creates automatically a default constructor (without any parameters)
+     */
+    public City() {
+        id = ++counter;
+    }
+
+    /**
+     * Constructor 1: with one param (only need name, ex: search city's name in Google API)
      *
      * @param name Name of the city
      */
     public City(String name) {
+        this();
         this.name = name;
     }
 
     /**
-     * Constructor with two params (don't need coordinates)
+     * Constructor 2: with two params (don't need coordinates)
      *
      * @param name     Name of the city
      * @param postcode Postcode of the city
      */
     public City(String name, String postcode) {
-        this.name = name;
+        this(name);
         this.postcode = postcode;
     }
 
     /**
-     * Constructor with all the params
+     * Constructor 3: with all the params
      *
      * @param name      Name of the city
      * @param postcode  Postcode of the city
@@ -41,10 +49,17 @@ public class City {
      * @param longitude {Coordinate} Longitude of the city
      */
     public City(String name, String postcode, Double latitude, Double longitude) {
-        this.name = name;
-        this.postcode = postcode;
+        this(name, postcode);
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -90,7 +105,8 @@ public class City {
     @Override
     public String toString() {
         return "City{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +

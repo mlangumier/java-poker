@@ -9,10 +9,12 @@ mini-game.
 
 ### Classes
 
-- Table : corresponds to our game's table
+- `Table` : manages our game table
     - Has between 1 and 5 players
     - Plays with a deck of cards
-- Deck : manages our cards
+- `Deck` : manages our cards
+    - Creates the deck
+    - Shuffles the deck
 
 ### Features
 
