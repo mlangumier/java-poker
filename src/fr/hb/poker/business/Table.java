@@ -47,21 +47,13 @@ public class Table {
     }
 
     /**
-     * Get the full list of cities from a CSV file and transforms it into an array
-     */
-    /*public void createCitiesFromCSV() {
-        cityManager.readCSVFile("cities.csv");
-        cityManager.createCitiesFromCSVArray();
-    }*/
-
-    /**
      * --- FOR TESTING PURPOSES
      * Generate a few players
      */
     public void createPreGeneratedPlayers() {
         this.players.add(new Player("Matt")); // C1
-        this.players.add(new Player("Sam", cityManager.getCities().stream().filter(city -> Objects.equals(city.getName(), "Villeurbanne".toUpperCase())).toList().getFirst())); // C2
-        this.players.add(new Player("Sam", cityManager.getCities().stream().filter(city -> Objects.equals(city.getName(), "Annecy".toUpperCase())).toList().getFirst(), LocalDate.of(1992, 2, 24))); // C3
+        // this.players.add(new Player("Sam", cityManager.getCities().stream().filter(city -> Objects.equals(city.getName(), "Villeurbanne".toUpperCase())).toList().getFirst())); // C2
+        // this.players.add(new Player("Sam", cityManager.getCities().stream().filter(city -> Objects.equals(city.getName(), "Annecy".toUpperCase())).toList().getFirst(), LocalDate.of(1992, 2, 24))); // C3
     }
 
     /**
@@ -115,28 +107,25 @@ public class Table {
      * @param player The player whose hand we want to analyze
      * @return The best combination the player has
      */
-    public Combination checkHands(Player player) {
-        List<Card> hand = player.getHand();
+    public Combination checkHand(Player player) {
+        // List<Card> hand = player.getHand();
+        List<Card> hand = this.createFakeHand(); //TODO: remove when done
 
         int[] values = new int[14]; // Set the hand in the array to get their values
         boolean isSameColor = true;
         boolean isFollowing = true;
         int counter = 1;
-        // TODO: HashSet<Card> cardsPair = new HashSet<>();
 
-        // Iterate on hand to get values
+        // Iterate on hand to get cards value
         for (Card card : hand) {
             int val = card.getValue() - 1;
             values[val]++;
-
-            // Check pairs here?
         }
 
         // Check if all cards are the same color as the first card in the hand
         isSameColor = hand.stream().filter(card -> card.getColor() == hand.getFirst().getColor()).count() == hand.size();
 
         // Check if pairs
-        //
 
         // Check if flush (suite)
         for (int i = 0; i < values.length - 1; i++) {
@@ -150,14 +139,12 @@ public class Table {
             }
         }
 
-
-        //--- Logs
+        //--- LOGS
         System.out.println("Values: " + Arrays.toString(values));
         // System.out.println("-- Counter: " + counter);
 
 
         //--- COMPARE & RETURN
-        // TODO: Transform into Switch-Case:
         // - Get Combination from methods for each Score, then show result (string) here
         if (isSameColor) {
             System.out.println("IsSameColor: " + isSameColor);
@@ -181,7 +168,71 @@ public class Table {
             }
         }*/
 
-        return Combination.HIGH_CARD;
 
+        //--- ORDER OF VERIFICATION (IF...ELSE)
+
+        // COLOR + STRAIGHT + ROYALE
+//        return Combination.ROYALE_FLUSH;
+        // COLOR + STRAIGHT
+//        return Combination.STRAIGHT_FLUSH;
+        // COLOR
+//        return Combination.FLUSH;
+
+        // STRAIGHT
+//        return Combination.STRAIGHT;
+
+        // FOUR
+//        return Combination.FOUR_OF_A_KIND;
+
+        // THREE + PAIR
+//        return Combination.FULL_HOUSE;
+        // THREE
+//        return Combination.THREE_OF_A_KIND;
+
+        // PAIR + PAIR
+//        return Combination.TWO_PAIRS;
+        // PAIR
+//        return Combination.ONE_PAIR;
+
+        return Combination.HIGH_CARD;
     }
+
+    private List<Card> createFakeHand() {
+        List<Card> cardList = deck.getDeck();
+        List<Card> fakeHand = new ArrayList<>();
+
+        // Royal Flush: follows top (10 -> Ace), same color (hearts)
+//        Collections.addAll(fakeHand, cardList.get(34), cardList.get(38), cardList.get(42), cardList.get(46), cardList.get(50));
+
+        // Straight Flush: follows (7 -> Jack), same color (club)
+//        Collections.addAll(fakeHand, cardList.get(20), cardList.get(24), cardList.get(28), cardList.get(32), cardList.get(36));
+
+        // Four of a Kind (7)
+//        Collections.addAll(fakeHand, cardList.get(20), cardList.get(21), cardList.get(22), cardList.get(23));
+
+        // Full House: pair (4) + triple (10)
+//        Collections.addAll(fakeHand, cardList.get(11), cardList.get(12), cardList.get(33), cardList.get(34), cardList.get(35));
+
+        // Flush: same color (diamond)
+//        Collections.addAll(fakeHand, cardList.get(1), cardList.get(5), cardList.get(9), cardList.get(13), cardList.get(17));
+
+        // Straight: follows (4 -> 8)
+//        Collections.addAll(fakeHand, cardList.get(8), cardList.get(13), cardList.get(17), cardList.get(23), cardList.get(26));
+
+        // Three of a kind: triple (King)
+//        Collections.addAll(fakeHand, cardList.get(44), cardList.get(45), cardList.get(46));
+
+        // Two pairs (4, Ace)
+//        Collections.addAll(fakeHand, cardList.get(9), cardList.get(10), cardList.get(49), cardList.get(50));
+
+        // One pair (5)
+//        Collections.addAll(fakeHand, cardList.get(14), cardList.get(15));
+
+        // High card (Queen)
+        Collections.addAll(fakeHand, cardList.get(41));
+
+        System.out.println("Fake hand: " + fakeHand);
+        return fakeHand;
+    }
+
 }

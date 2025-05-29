@@ -1,5 +1,6 @@
 package fr.hb.poker;
 
+import fr.hb.poker.business.Player;
 import fr.hb.poker.business.Table;
 
 public class Main {
@@ -18,11 +19,11 @@ public class Main {
         table.handOutCard(5);
 
         // Shows every players hand
-        table.showPlayersHands();
+        // table.showPlayersHands();
 
         // Checks players hands for score
-        /*for (Player player : table.getPlayers()) {
-            System.out.print("--- " + player.getName() + "'s hand: " + table.checkHands(player) + "\n");
-        }*/
+        for (Player player : table.getPlayers()) {
+            System.out.print("- " + player.getName() + "'s hand: " + table.checkHand(player) + "\n");
+        }
     }
 }
