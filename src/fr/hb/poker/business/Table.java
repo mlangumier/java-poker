@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Table {
-    private ArrayList<Player> players = new ArrayList<>();
-    private Deck deck = new Deck();
+    private List<Player> players;
+    private Deck deck;
+    private CityManager cityManager;
 
     /**
      * Constructor
@@ -13,15 +14,19 @@ public class Table {
      * @param playerNbr Number of players joining the game when it starts {1-5}
      */
     public Table(int playerNbr) {
+        cityManager = new CityManager();
+        deck = new Deck();
+        players = new ArrayList<>();
+
         // addPlayerV1(playerNbr);
         createPreGeneratedPlayers();
     }
 
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(List<Player> players) {
         this.players = players;
     }
 
@@ -33,11 +38,30 @@ public class Table {
         this.deck = deck;
     }
 
+    public CityManager getCityManager() {
+        return cityManager;
+    }
+
+    public void setCityManager(CityManager cityManager) {
+        this.cityManager = cityManager;
+    }
+
+    /**
+     * Get the full list of cities from a CSV file and transforms it into an array
+     */
+    /*public void createCitiesFromCSV() {
+        cityManager.readCSVFile("cities.csv");
+        cityManager.createCitiesFromCSVArray();
+    }*/
+
+    /**
+     * --- FOR TESTING PURPOSES
+     * Generate a few players
+     */
     public void createPreGeneratedPlayers() {
         this.players.add(new Player("Matt")); // C1
-//        this.players.add(new Player("Sam", new City("Villeurbanne"))); // C2
-//        this.players.add(new Player("William", new City("Annecy"), LocalDate.of(1992, 2, 24))); // C3
-//        this.players.add(new Player("James", new City("Lyon", "69003"), LocalDate.of(1992, 2, 24))); // C3
+        this.players.add(new Player("Sam", cityManager.getCities().stream().filter(city -> Objects.equals(city.getName(), "Villeurbanne".toUpperCase())).toList().getFirst())); // C2
+        this.players.add(new Player("Sam", cityManager.getCities().stream().filter(city -> Objects.equals(city.getName(), "Annecy".toUpperCase())).toList().getFirst(), LocalDate.of(1992, 2, 24))); // C3
     }
 
     /**
@@ -47,15 +71,15 @@ public class Table {
      */
     public void addPlayerV1(int count) {
         Scanner scanner = new Scanner(System.in);
-        String firstName;
+        String playerName;
 
         int i = 0;
         while (i < count && this.players.size() < 6) {
             System.out.printf("--- Player %s ---%n", i + 1);
             System.out.print("Enter your name: ");
-            firstName = scanner.nextLine();
+            playerName = scanner.nextLine();
 
-            this.players.add(new Player(firstName));
+            this.players.add(new Player(playerName));
             i++;
         }
 
@@ -92,13 +116,13 @@ public class Table {
      * @return The best combination the player has
      */
     public Combination checkHands(Player player) {
-        ArrayList<Card> hand = player.getHand();
+        List<Card> hand = player.getHand();
 
         int[] values = new int[14]; // Set the hand in the array to get their values
         boolean isSameColor = true;
         boolean isFollowing = true;
         int counter = 1;
-        HashSet<Card> cardsPair = new HashSet<>();
+        // TODO: HashSet<Card> cardsPair = new HashSet<>();
 
         // Iterate on hand to get values
         for (Card card : hand) {

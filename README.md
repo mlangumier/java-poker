@@ -18,4 +18,9 @@ mini-game.
 
 ### Features
 
-- User input to create players (Scanner)
+- The app creates a deck of 52 cards and shuffles it
+- The user can create players using the terminal
+- The app then hands out cards to each player the user created
+- The app checks the players hand for their best combination and determines the winner
+
+## Todo

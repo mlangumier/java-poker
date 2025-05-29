@@ -1,6 +1,7 @@
 package fr.hb.poker.business;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class City {
     private Long id;
@@ -8,7 +9,7 @@ public class City {
     private String postcode;
     private Double latitude;
     private Double longitude;
-    private ArrayList<Player> players;
+    private List<Player> players;
     private static Long counter = 0L;
 
     /**
@@ -16,7 +17,8 @@ public class City {
      * Tips: Java creates automatically a default constructor (without any parameters)
      */
     public City() {
-        id = ++counter;
+        this.id = ++counter;
+        this.players = new ArrayList<>();
     }
 
     /**
@@ -94,12 +96,16 @@ public class City {
         this.longitude = longitude;
     }
 
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(List<Player> players) {
         this.players = players;
+    }
+
+    public void addPlayer(Player player) {
+        this.players.add(player);
     }
 
     @Override
@@ -110,7 +116,6 @@ public class City {
                 ", postcode='" + postcode + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                ", players=" + players +
                 '}';
     }
 }

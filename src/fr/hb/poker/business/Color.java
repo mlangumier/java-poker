@@ -1,24 +1,24 @@
 package fr.hb.poker.business;
 
 public class Color {
-    private String name;
+    private ColorEnum cardColor;
 
-    public Color(String name) {
-        this.name = name;
+    public Color(ColorEnum color) {
+        this.cardColor = color;
     }
 
-    public String getName() {
-        return name;
+    public ColorEnum getCardColor() {
+        return cardColor;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCardColor(ColorEnum cardColor) {
+        this.cardColor = cardColor;
     }
 
     @Override
     public String toString() {
         return "Color{" +
-                "name='" + name + '\'' +
+                "cardColor=" + cardColor +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package fr.hb.poker.business;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     //--- Personal info
@@ -12,7 +13,7 @@ public class Player {
     private static Long counter = 0L; // Auto-boxing: '0'(L = Long) is placed inside a box, corresponds to an object.
     //--- Game info
     private int points;
-    private ArrayList<Card> hand = new ArrayList<>();
+    private List<Card> hand;
 
     //--- OVERLOADING constructors (FR: surcharge)
     // Allows us to have multiple constructors in case not all attributes are required
@@ -26,6 +27,7 @@ public class Player {
         this.id = ++counter;
         this.name = name;
         this.points = 0;
+        this.hand = new ArrayList<>();
     }
 
     /**
@@ -37,7 +39,10 @@ public class Player {
     public Player(String name, City city) {
         // Instead of repeating the attributes to create the user, we can call the other constructor this way:
         this(name); // this(): is the constructor method of this class (vs `this.something` that refers to the objects of the class)
+
+        // Check if city exists, else add it
         this.city = city;
+        this.city.addPlayer(this);
     }
 
     /**
@@ -84,11 +89,11 @@ public class Player {
         this.city = city;
     }
 
-    public ArrayList<Card> getHand() {
+    public List<Card> getHand() {
         return hand;
     }
 
-    public void setHand(ArrayList<Card> hand) {
+    public void setHand(List<Card> hand) {
         this.hand = hand;
     }
 

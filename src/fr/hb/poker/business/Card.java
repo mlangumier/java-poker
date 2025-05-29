@@ -44,6 +44,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.format("%s of %s (%s)", this.getName(), this.getColor().getName(), this.getValue());
+        return String.format("%s of %s (%s)", this.getName(), this.getColor().getCardColor(), this.getValue());
     }
 }

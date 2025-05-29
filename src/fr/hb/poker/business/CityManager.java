@@ -17,6 +17,9 @@ public class CityManager {
     public CityManager() {
         this.records = new ArrayList<>();
         this.cities = new ArrayList<>();
+
+        readCSVFile("cities.csv");
+        createCitiesFromCSVArray();
     }
 
     public List<List<String>> getRecords() {
